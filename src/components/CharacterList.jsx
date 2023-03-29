@@ -5,10 +5,14 @@ import Seacrh from "./Seacrh";
 function Page({ page, setPage }) {
   return (
     <div>
-    <p>Page: {page}</p>
+      <p>Page: {page}</p>
       <header className="d-flex justify-content-between align-items-center">
-        <button className="btn btn-primary btn-sm"
-          onClick={() => setPage(page - 1)}>Previos</button>
+        <button
+          className="btn btn-primary btn-sm"
+          onClick={() => setPage(page - 1)}
+        >
+          Previos
+        </button>
         <button
           className="btn btn-primary btn-sm"
           onClick={() => setPage(page + 1)}
@@ -43,11 +47,13 @@ function CharacterList() {
     <div className="container">
       <Page page={page} setPage={setPage} />
 
-      <Seacrh name={name} setName={setName}/>
+      <Seacrh name={name} setName={setName} />
 
       {load ? (
+        <div style={{display: "flex" ,minHeight: '100vh', justifyItems: "center", justifyContent: "center", alignItems: "center"}} >
         <div className="spinner-border text-light" role="status">
           <span className="visually-hidden"></span>
+        </div>
         </div>
       ) : (
         <div className="row">
