@@ -50,10 +50,18 @@ function CharacterList() {
       <Seacrh name={name} setName={setName} />
 
       {load ? (
-        <div style={{display: "flex" ,minHeight: '100vh', justifyItems: "center", justifyContent: "center", alignItems: "center"}} >
-        <div className="spinner-border text-light" role="status">
-          <span className="visually-hidden"></span>
-        </div>
+        <div
+          style={{
+            display: "flex",
+            minHeight: "100vh",
+            justifyItems: "center",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div className="spinner-border text-light" role="status">
+            <span className="visually-hidden"></span>
+          </div>
         </div>
       ) : (
         <div className="row">

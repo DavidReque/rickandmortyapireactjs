@@ -6,7 +6,7 @@ const Seacrh = ({ name, setName }) => {
         alignItems: "center",
         justifyContent: "center",
         marginTop: 25,
-        marginBottom: 25
+        marginBottom: 25,
       }}
     >
       <form action="" onSubmit={(e) => e.preventDefault()}>
