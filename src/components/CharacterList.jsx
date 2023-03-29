@@ -1,62 +1,73 @@
 import { useState, useEffect } from "react";
 import Character from "./Character";
+import Seacrh from "./Seacrh";
 
-function Page({page, setPage}) {
+function Page({ page, setPage }) {
   return (
-    <header className="d-flex justify-content-between align-items-center">
-      <p>Page: {page}</p>
-      <button className="btn btn-primary btn-sm" onClick={() => setPage(page + 1)}>
-        Pagina {page}
-      </button>
-    </header>
-  )
+    <div>
+    <p>Page: {page}</p>
+      <header className="d-flex justify-content-between align-items-center">
+        <button className="btn btn-primary btn-sm"
+          onClick={() => setPage(page - 1)}>Previos</button>
+        <button
+          className="btn btn-primary btn-sm"
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
+      </header>
+    </div>
+  );
 }
 
 function CharacterList() {
-  
-    const [personajes, setPersonajes] = useState([]);
-    const [load, setLoad] = useState(true)
-    const [page, setPage] = useState(1)
+  const [personajes, setPersonajes] = useState([]);
+  const [load, setLoad] = useState(true);
+  const [page, setPage] = useState(1);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
+      const response = await fetch(
+        `https://rickandmortyapi.com/api/character?page=${page}&name=${name}`
+      );
       const data = await response.json();
-      setLoad(false)
+      setLoad(false);
       setPersonajes(data.results);
     };
 
     getData();
-  }, [page]);
+  }, [page, name]);
 
-
-    return (
+  return (
     <div className="container">
+      <Page page={page} setPage={setPage} />
 
-      <Page page={page} setPage={setPage}/>
+      <Seacrh name={name} setName={setName}/>
 
-      {
-        load ? <div className="spinner-border text-light" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div> : 
+      {load ? (
+        <div className="spinner-border text-light" role="status">
+          <span className="visually-hidden"></span>
+        </div>
+      ) : (
         <div className="row">
-        {personajes.map((personaje) => {
-        return (
-          <div className="col-md-4" key={personaje.id}>
-            <Character personaje={personaje} />
-          </div>
-        );
-      })}
-      </div>
-      }
-      
-      <Page page={page} setPage={setPage}/>
+          {personajes.map((personaje) => {
+            return (
+              <div className="col-md-4" key={personaje.id}>
+                <Character personaje={personaje} />
+              </div>
+            );
+          })}
+        </div>
+      )}
 
-      <footer><div className="text-center">David Requeno 2023 &#169;</div>
-</footer>
+      <Page page={page} setPage={setPage} />
 
+      <footer>
+        <div className="text-center">David Requeno 2023 &#169;</div>
+      </footer>
     </div>
-);
+  );
 }
 
 export default CharacterList;
