@@ -7,12 +7,14 @@ function Page({ page, setPage }) {
     <div>
       <p>Page: {page}</p>
       <header className="d-flex justify-content-between align-items-center">
-        <button
-          className="btn btn-primary btn-sm"
-          onClick={() => setPage(page - 1)}
-        >
-          Previos
-        </button>
+        {page > 1 && (
+          <button
+            className="btn btn-primary btn-sm"
+            onClick={() => setPage(page - 1)}
+          >
+            Previous
+          </button>
+        )}
         <button
           className="btn btn-primary btn-sm"
           onClick={() => setPage(page + 1)}
