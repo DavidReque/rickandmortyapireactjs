@@ -55,7 +55,7 @@ function CharacterList() {
 
       <Page page={page} setPage={setPage} />
 
-      <footer style={{margin: '10px'}}>
+      <footer>
         <div className="text-center">David Requeno 2023 &#169;</div>
       </footer>
     </div>
