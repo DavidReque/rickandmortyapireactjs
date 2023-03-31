@@ -35,7 +35,6 @@ function CharacterList() {
             minHeight: "100vh",
             justifyItems: "center",
             justifyContent: "center",
-            alignItems: "center",
           }}
         >
           <div className="spinner-border text-light" role="status">
@@ -57,7 +56,7 @@ function CharacterList() {
       <Page page={page} setPage={setPage} />
 
       <footer>
-        <div className="text-center">David Requeno 2023 &#169;</div>
+        <div style={{marginBottom: '10px', marginTop: '10px'}} className="text-center">David Requeno 2023 &#169;</div>
       </footer>
     </div>
   );
